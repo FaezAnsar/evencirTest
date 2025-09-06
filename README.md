@@ -1,16 +1,12 @@
-# evencir_test
+Key Highlights
 
-A new Flutter project.
+Used DioCacheInterceptor to cache api calls
 
-## Getting Started
+Implemented pagination through central logic of  abstract classes
 
-This project is a starting point for a Flutter application.
+Category api didn't provide thumbnail so the url was hit and first product fetched by limit=1 and thumbnail added to category model ,the calls were cached and category cards kept alive using KeepAliveWrapper
 
-A few resources to get you started if this is your first Flutter project:
+ProductListPages caters both raw products and category wise products through an optional categoryUrl ,powered by singular cubit
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
