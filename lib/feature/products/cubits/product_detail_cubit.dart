@@ -22,7 +22,7 @@ class ProductDetailCubit extends AppApiCubit<ProductModel> {
     );
   }
 
-  ProductModel? get parkingSpace => state is ApiLoadedState
+  ProductModel? get productDetail => state is ApiLoadedState
       ? (state as ApiLoadedState<ProductModel>).data
       : null;
 }
