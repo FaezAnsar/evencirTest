@@ -58,14 +58,7 @@ class CategoriesScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 8),
-                    Text(
-                      '${categories.length} results found',
-                      style: GoogleFonts.montserrat(
-                        color: Colors.grey,
-                        fontSize: 13,
-                      ),
-                    ),
+
                     const SizedBox(height: 8),
                     Expanded(
                       child:
@@ -79,8 +72,23 @@ class CategoriesScreen extends StatelessWidget {
                                         ),
                                   )
                                   .toList();
-                              return CategoryListWidget(
-                                filteredCategories: filteredCategories,
+                              return Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    '${filteredCategories.length} results found',
+                                    style: GoogleFonts.montserrat(
+                                      color: Colors.grey,
+                                      fontSize: 13,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 8),
+                                  Expanded(
+                                    child: CategoryListWidget(
+                                      filteredCategories: filteredCategories,
+                                    ),
+                                  ),
+                                ],
                               );
                             },
                           ),
