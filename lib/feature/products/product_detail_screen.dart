@@ -5,6 +5,7 @@ import 'package:evencir_test/feature/products/cubits/product_detail_cubit.dart';
 import 'package:evencir_test/feature/products/models/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -40,9 +41,9 @@ class ProductDetailWidget extends StatelessWidget {
           return SafeArea(
             child: SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16.0,
-                  vertical: 8,
+                padding: EdgeInsets.symmetric(
+                  horizontal: 16.0.w,
+                  vertical: 8.h,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,34 +62,38 @@ class ProductDetailWidget extends StatelessWidget {
                         Text(
                           "Product Details",
                           style: GoogleFonts.playfairDisplay(
-                            fontSize: 24,
+                            fontSize: 20.h,
                             fontWeight: FontWeight.bold,
                           ),
                           textAlign: TextAlign.center,
                         ),
                       ],
                     ),
-                    const SizedBox(height: 8),
+                    SizedBox(height: 8.h),
                     // Main image
                     ClipRRect(
                       borderRadius: BorderRadius.circular(12),
                       child: Image.network(
                         product.thumbnail,
-                        height: 180,
+                        height: 180.h,
                         width: double.infinity,
                         fit: BoxFit.fitHeight,
                       ),
                     ),
-                    const SizedBox(height: 16),
+                    SizedBox(height: 16.h),
                     // Product details
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          'Product Details:',
-                          style: GoogleFonts.montserrat(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
+                        Expanded(
+                          child: Text(
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
+                            'Product Details:',
+                            style: GoogleFonts.montserrat(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15.w,
+                            ),
                           ),
                         ),
                         IconButton(
@@ -121,7 +126,18 @@ class ProductDetailWidget extends StatelessWidget {
                     const SizedBox(height: 8),
                     Row(
                       children: [
-                        _detailRow('Rating:', product.rating.toString()),
+                        Text(
+                          'Rating:',
+                          style: GoogleFonts.montserrat(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14.w,
+                          ),
+                        ),
+                        const SizedBox(width: 6),
+                        Text(
+                          product.rating.toString(),
+                          style: GoogleFonts.montserrat(fontSize: 14.h),
+                        ),
                         const SizedBox(width: 4),
                         Row(
                           children: List.generate(
@@ -139,19 +155,19 @@ class ProductDetailWidget extends StatelessWidget {
                       'Description:',
                       style: GoogleFonts.montserrat(
                         fontWeight: FontWeight.bold,
-                        fontSize: 14,
+                        fontSize: 14.h,
                       ),
                     ),
                     Text(
                       product.description,
                       style: GoogleFonts.montserrat(fontSize: 13),
                     ),
-                    const SizedBox(height: 16),
+                    SizedBox(height: 16.h),
                     Text(
                       'Product Gallery :',
                       style: GoogleFonts.montserrat(
                         fontWeight: FontWeight.bold,
-                        fontSize: 14,
+                        fontSize: 14.h,
                       ),
                     ),
                     const SizedBox(height: 8),
@@ -194,14 +210,23 @@ Widget _detailRow(String label, String value) {
     child: Row(
       children: [
         Text(
+          overflow: TextOverflow.ellipsis,
+          maxLines: 1,
           label,
           style: GoogleFonts.montserrat(
             fontWeight: FontWeight.bold,
-            fontSize: 14,
+            fontSize: 14.w,
           ),
         ),
         const SizedBox(width: 6),
-        Text(value, style: GoogleFonts.montserrat(fontSize: 14)),
+        Expanded(
+          child: Text(
+            overflow: TextOverflow.ellipsis,
+            maxLines: 1,
+            value,
+            style: GoogleFonts.montserrat(fontSize: 14.w),
+          ),
+        ),
       ],
     ),
   );
