@@ -84,6 +84,7 @@ class FavoritesScreen extends StatelessWidget {
                             itemBuilder: (context, index) {
                               final product = filteredFavorites[index];
                               return Card(
+                                color: Theme.of(context).cardColor,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12),
                                   // side: index == 0
