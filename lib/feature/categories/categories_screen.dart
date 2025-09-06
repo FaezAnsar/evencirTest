@@ -83,10 +83,8 @@ class CategoriesScreen extends StatelessWidget {
                                     ),
                                   ),
                                   const SizedBox(height: 8),
-                                  Expanded(
-                                    child: CategoryListWidget(
-                                      filteredCategories: filteredCategories,
-                                    ),
+                                  CategoryListWidget(
+                                    filteredCategories: filteredCategories,
                                   ),
                                 ],
                               );

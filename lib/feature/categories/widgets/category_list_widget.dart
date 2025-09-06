@@ -10,19 +10,21 @@ class CategoryListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      itemCount: filteredCategories.length,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        mainAxisSpacing: 12,
-        crossAxisSpacing: 12,
-        childAspectRatio: 1.1,
-      ),
-      itemBuilder: (context, index) {
-        final category = filteredCategories[index];
+    return Expanded(
+      child: GridView.builder(
+        itemCount: filteredCategories.length,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          mainAxisSpacing: 12,
+          crossAxisSpacing: 12,
+          childAspectRatio: 1.1,
+        ),
+        itemBuilder: (context, index) {
+          final category = filteredCategories[index];
 
-        return KeepAliveWrapper(child: CategoryCard(category: category));
-      },
+          return KeepAliveWrapper(child: CategoryCard(category: category));
+        },
+      ),
     );
   }
 }
