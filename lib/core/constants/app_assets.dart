@@ -10,7 +10,9 @@ class AppAssets {
   static const String supportIcon = 'assets/icons/support.png';
 
   // Images Path
+
   static const String imagePath = 'assets/images';
+  static const String logoPath = '$imagePath/logo.jpeg';
   static const String splashImage = '$imagePath/splash.png';
 
   static const String locationImagePath = '$imagePath/location.jpg';
