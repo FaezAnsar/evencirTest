@@ -18,8 +18,6 @@ Future<void> main() async {
   // await dotenv.load(fileName: '.env');
   await initializeDependencies();
 
-  // Initialize Stripe through service locator
-
   runApp(const MyApp());
 }
 

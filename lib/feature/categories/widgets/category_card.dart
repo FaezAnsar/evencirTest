@@ -7,6 +7,7 @@ import 'package:evencir_test/feature/categories/models/category_model.dart';
 import 'package:evencir_test/feature/products/models/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -28,9 +29,8 @@ class CategoryCard extends StatelessWidget {
               ProductsByCategoryCubit,
               ApiBasePaginatedModel<ProductModel>
             >(
-              listener: (context, state) {
-                // TODO: implement listener
-              },
+              loadingBuilder: (context, state) => LoadingWidget(),
+              emptyBuilder: (context, state) => Text('No products found'),
               successBuilder: (context, state) {
                 category.thumbnail ??= state.data.data.isNotEmpty
                     ? state.data.data.first.thumbnail
@@ -56,20 +56,30 @@ class CategoryCard extends StatelessWidget {
                       ),
                     ),
                     Positioned(
-                      left: 12,
-                      bottom: 12,
-                      child: Text(
-                        category.name,
-                        style: GoogleFonts.montserrat(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                          shadows: [
-                            Shadow(
-                              color: Colors.black.withValues(alpha: 0.5),
-                              blurRadius: 4,
+                      left: 5.sp,
+                      right: 5.sp,
+                      bottom: 10.sp,
+                      child: SizedBox(
+                        width: double.infinity,
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            category.name,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: GoogleFonts.montserrat(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12.h,
+                              shadows: [
+                                Shadow(
+                                  color: Colors.black.withValues(alpha: 0.5),
+                                  blurRadius: 4,
+                                ),
+                              ],
                             ),
-                          ],
+                          ),
                         ),
                       ),
                     ),

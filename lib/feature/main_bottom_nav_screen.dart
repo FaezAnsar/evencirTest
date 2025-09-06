@@ -124,6 +124,7 @@ class _MainBottomNavigationScreenState
             Text(
               label,
               style: TextStyle(
+                fontSize: 10.sp,
                 color: Colors.white,
                 fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
               ),

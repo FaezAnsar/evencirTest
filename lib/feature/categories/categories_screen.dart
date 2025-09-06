@@ -1,6 +1,7 @@
 import 'package:evencir_test/configs/service_locator.dart';
 import 'package:evencir_test/core/cubits/search_cubit.dart';
 import 'package:evencir_test/core/widgets/app_api_consumer.dart';
+import 'package:evencir_test/core/widgets/loading_widget.dart';
 import 'package:evencir_test/feature/categories/cubit/categories_cubit.dart';
 import 'package:evencir_test/feature/categories/models/category_model.dart';
 import 'package:evencir_test/feature/categories/widgets/category_list_widget.dart';
@@ -29,7 +30,6 @@ class CategoriesScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
             child: Builder(
               builder: (context) {
-                final categories = locator<CategoriesCubit>().categories;
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -63,6 +63,12 @@ class CategoriesScreen extends StatelessWidget {
                     Expanded(
                       child:
                           AppApiConsumer<CategoriesCubit, List<CategoryModel>>(
+                            loadingBuilder: (context, state) => LoadingWidget(),
+                            errorBuilder: (context, state) =>
+                                ErrorWidget(state.error),
+                            emptyBuilder: (context, state) => const Center(
+                              child: Text('No categories found'),
+                            ),
                             successBuilder: (context, categories) {
                               final filteredCategories = categories.data
                                   .where(
@@ -83,8 +89,10 @@ class CategoriesScreen extends StatelessWidget {
                                     ),
                                   ),
                                   const SizedBox(height: 8),
-                                  CategoryListWidget(
-                                    filteredCategories: filteredCategories,
+                                  Expanded(
+                                    child: CategoryListWidget(
+                                      filteredCategories: filteredCategories,
+                                    ),
                                   ),
                                 ],
                               );

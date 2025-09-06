@@ -59,15 +59,7 @@ class ProductsListScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  // Center(
-                  //   child: Text(
-                  //     categoryUrl?.split('/').last ?? 'Products',
-                  //     style: GoogleFonts.playfairDisplay(
-                  //       fontSize: 28,
-                  //       fontWeight: FontWeight.bold,
-                  //     ),
-                  //   ),
-                  // ),
+
                   const SizedBox(height: 16),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -109,7 +101,7 @@ class ProductsListScreen extends StatelessWidget {
                                 size: 80,
                                 color: Colors.grey,
                               ),
-                              const SizedBox(height: 16),
+                              SizedBox(height: 16.h),
                               Text(
                                 'No Products Found',
                                 style: Theme.of(context).textTheme.titleLarge,
@@ -137,9 +129,7 @@ class ProductsListScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 16.0,
-                              ),
+                              padding: EdgeInsets.symmetric(horizontal: 16.0.w),
                               child: Text(
                                 '${filteredProducts.length} results found',
                                 style: GoogleFonts.montserrat(
@@ -152,9 +142,7 @@ class ProductsListScreen extends StatelessWidget {
                             const SizedBox(height: 8),
                             Expanded(
                               child: ListView.builder(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 16,
-                                ),
+                                padding: EdgeInsets.symmetric(horizontal: 16.w),
                                 itemCount: filteredProducts.length,
                                 itemBuilder: (context, index) {
                                   final product = filteredProducts[index];
@@ -209,7 +197,7 @@ class ProductsListScreen extends StatelessWidget {
                                                               fontWeight:
                                                                   FontWeight
                                                                       .bold,
-                                                              fontSize: 18,
+                                                              fontSize: 18.sp,
                                                             ),
                                                       ),
                                                     ),
@@ -219,12 +207,12 @@ class ProductsListScreen extends StatelessWidget {
                                                           GoogleFonts.montserrat(
                                                             fontWeight:
                                                                 FontWeight.bold,
-                                                            fontSize: 18,
+                                                            fontSize: 18.sp,
                                                           ),
                                                     ),
                                                   ],
                                                 ),
-                                                const SizedBox(height: 4),
+                                                SizedBox(height: 4.h),
                                                 Row(
                                                   children: [
                                                     Text(
@@ -233,10 +221,10 @@ class ProductsListScreen extends StatelessWidget {
                                                           GoogleFonts.montserrat(
                                                             fontWeight:
                                                                 FontWeight.w500,
-                                                            fontSize: 14,
+                                                            fontSize: 14.sp,
                                                           ),
                                                     ),
-                                                    const SizedBox(width: 4),
+                                                    SizedBox(width: 4.w),
                                                     Row(
                                                       children: List.generate(
                                                         5,
@@ -261,7 +249,7 @@ class ProductsListScreen extends StatelessWidget {
                                                 Text(
                                                   'In ${product.category}',
                                                   style: GoogleFonts.montserrat(
-                                                    fontSize: 14,
+                                                    fontSize: 14.sp,
                                                     color: Colors.grey[700],
                                                   ),
                                                 ),
